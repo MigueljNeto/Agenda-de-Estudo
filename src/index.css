@@ -1,0 +1,574 @@
+:root {
+  --fundo: #f3f4f6;
+  --cartao: #ffffff;
+  --item: #f9fafb;
+  --borda: #e5e7eb;
+  --texto: #111827;
+  --suave: #6b7280;
+  --azul: #3b82f6;
+  --azul-forte: #2563eb;
+  --verde: #10b981;
+  --verde-forte: #059669;
+  --vermelho: #ef4444;
+  --laranja: #f59e0b;
+  --roxo: #8b5cf6;
+  --sombra: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #0f172a;
+    --cartao: #1e293b;
+    --item: #273449;
+    --borda: #334155;
+    --texto: #e5e7eb;
+    --suave: #94a3b8;
+    --sombra: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Arial, sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--borda);
+  background: var(--cartao);
+}
+
+input[type="date"] {
+  color-scheme: light dark;
+}
+
+.app {
+  padding: 0 16px 80px;
+}
+
+.cabecalho {
+  max-width: 640px;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+.cabecalho h1 {
+  margin: 0 0 14px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.nivel {
+  background: var(--roxo);
+  color: white;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.barra {
+  width: 160px;
+  height: 10px;
+  background: var(--borda);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+  border-radius: 999px;
+  transition: width 0.4s;
+}
+
+.barra.pequena {
+  width: 100%;
+  height: 6px;
+  margin-top: 6px;
+}
+
+.xp-texto {
+  color: var(--suave);
+}
+
+.sequencia {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--item);
+  border: 1px solid var(--borda);
+  color: var(--suave);
+}
+
+.sequencia.ativa {
+  color: var(--laranja);
+  border-color: var(--laranja);
+  font-weight: bold;
+}
+
+.container {
+  background: var(--cartao);
+  padding: 24px;
+  margin: 20px auto;
+  max-width: 640px;
+  border-radius: 15px;
+  box-shadow: var(--sombra);
+}
+
+.form-tarefa {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo-nome {
+  width: 100%;
+}
+
+.form-linha {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.form-linha select,
+.form-linha input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn {
+  padding: 9px 15px;
+  border: none;
+  background: var(--azul);
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--azul-forte);
+}
+
+.adicionar {
+  background: var(--verde);
+}
+
+.adicionar:hover {
+  background: var(--verde-forte);
+}
+
+.secundario {
+  background: var(--suave);
+}
+
+.btn-link {
+  display: block;
+  margin: 10px auto 0;
+  background: none;
+  border: none;
+  color: var(--suave);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.abas {
+  display: flex;
+  gap: 4px;
+  margin: 22px 0 16px;
+  border-bottom: 2px solid var(--borda);
+  overflow-x: auto;
+}
+
+.abas button {
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--suave);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+}
+
+.abas button.ativo {
+  color: var(--azul);
+  border-bottom-color: var(--azul);
+  font-weight: bold;
+}
+
+.filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.filtros button {
+  padding: 7px 14px;
+  border: 1px solid var(--borda);
+  background: var(--item);
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.filtros button.ativo {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: white;
+}
+
+.filtros select {
+  margin-left: auto;
+}
+
+.progresso-geral {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--suave);
+  margin-bottom: 10px;
+}
+
+.progresso-geral .barra {
+  flex: 1;
+}
+
+.resumo {
+  color: var(--suave);
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.vazio {
+  text-align: center;
+  color: var(--suave);
+  padding: 20px 0;
+}
+
+.erro {
+  color: var(--vermelho);
+  font-size: 14px;
+}
+
+.grupo h2 {
+  font-size: 15px;
+  margin: 18px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.grupo-atrasadas h2 {
+  color: var(--vermelho);
+}
+
+.grupo-hoje h2 {
+  color: var(--laranja);
+}
+
+.grupo-feitas h2 {
+  color: var(--verde);
+}
+
+.contagem {
+  font-size: 12px;
+  background: var(--item);
+  border: 1px solid var(--borda);
+  color: var(--suave);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tarefa,
+.materia {
+  background: var(--item);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--borda);
+  border-left-width: 4px;
+}
+
+.tarefa.prioridade-alta {
+  border-left-color: var(--vermelho);
+}
+
+.tarefa.prioridade-media {
+  border-left-color: var(--laranja);
+}
+
+.tarefa.prioridade-baixa {
+  border-left-color: var(--azul);
+}
+
+.tarefa.feita {
+  opacity: 0.65;
+  border-left-color: var(--verde);
+}
+
+.tarefa.editando {
+  display: block;
+}
+
+.tarefa input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--verde);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tarefa-corpo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tarefa-nome {
+  overflow-wrap: anywhere;
+}
+
+.tarefa.feita .tarefa-nome {
+  text-decoration: line-through;
+  color: var(--suave);
+}
+
+.tarefa-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--suave);
+}
+
+.chip {
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: white;
+  background: var(--cor);
+}
+
+.prazo {
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+}
+
+.prazo-atrasada {
+  background: var(--vermelho);
+  border-color: var(--vermelho);
+  color: white;
+}
+
+.prazo-hoje {
+  background: var(--laranja);
+  border-color: var(--laranja);
+  color: white;
+}
+
+.xp {
+  padding: 2px 0;
+}
+
+.xp.ganho {
+  color: var(--verde);
+  font-weight: bold;
+}
+
+.tarefa-acoes {
+  display: flex;
+  gap: 2px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.tarefa:hover .tarefa-acoes,
+.tarefa:focus-within .tarefa-acoes {
+  opacity: 1;
+}
+
+.icone {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.icone:hover {
+  background: var(--borda);
+}
+
+.form-materia {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.form-materia input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.cores {
+  display: flex;
+  gap: 6px;
+}
+
+.cor {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cor.escolhida {
+  border-color: var(--texto);
+  transform: scale(1.15);
+}
+
+.materia {
+  border-left-color: var(--cor);
+}
+
+.materia-cor {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cor);
+  flex-shrink: 0;
+}
+
+.conquistas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.conquista {
+  background: var(--item);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  opacity: 0.6;
+}
+
+.conquista.desbloqueada {
+  opacity: 1;
+  border-color: var(--roxo);
+}
+
+.conquista-icone {
+  font-size: 28px;
+}
+
+.conquista-desc {
+  font-size: 12px;
+  color: var(--suave);
+}
+
+.avisos {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.aviso {
+  background: var(--texto);
+  color: var(--cartao);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: bold;
+  box-shadow: var(--sombra);
+  animation: surgir 0.3s ease-out;
+}
+
+.aviso-xp {
+  background: var(--verde);
+  color: white;
+}
+
+.aviso-nivel,
+.aviso-conquista {
+  background: var(--roxo);
+  color: white;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+
+  .filtros select {
+    margin-left: 0;
+    width: 100%;
+  }
+}
