@@ -2,7 +2,7 @@
 
 Organizador de tarefas para estudantes, com um toque de jogo: cada entrega rende XP, você sobe de nível, mantém sequências de dias produtivos e desbloqueia conquistas.
 
-Começou como um gerenciador de tarefas simples feito para a faculdade e evoluiu para uma agenda de estudos gamificada, construída com React.
+Começou como um gerenciador de tarefas simples feito para fins academicos e evoluiu para uma agenda de estudos gamificada, construída com React.
 
 ## Funcionalidades
 
@@ -77,9 +77,3 @@ src/
 - [Create React App](https://create-react-app.dev/) para build e ambiente de desenvolvimento
 - [Testing Library](https://testing-library.com/) e Jest para os testes
 - CSS puro com variáveis para os temas
-
-## Próximas ideias
-
-- Modo Pomodoro dentro de cada tarefa
-- Gráfico de XP e tarefas concluídas na semana
-- Subtarefas (checklist dentro da tarefa)
